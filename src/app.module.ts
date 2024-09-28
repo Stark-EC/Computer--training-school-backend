@@ -13,16 +13,16 @@ import { Payment } from './payments/entities/payment.entity';
 
 @Module({
   imports: [
-    // TypeOrmModule.forRoot({
-    //   type: 'mysql',
-    //   host: 'localhost',
-    //   port: 3306,
-    //   username: 'root',
-    //   password: 'password',
-    //   database: 'training_school',
-    //   entities: [User],
-    //   synchronize: true,
-    // }),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'STARKEC',
+      database: 'training_school',
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
     UsersModule,
     AuthModule,
     CoursesModule,

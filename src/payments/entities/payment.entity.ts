@@ -13,6 +13,10 @@ export class Payment {
   @Column({ type: 'decimal' })
   amount: number;
 
+  @Column()
+  userId: number; // Ensure this property exists
+
+
   @Column({ default: 'pending' })
   status: string;  // 'pending', 'completed'
 }

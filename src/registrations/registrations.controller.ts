@@ -25,9 +25,9 @@ async getProgress(@Req() req) {
 }
 
 
-  @UseGuards(JwtAuthGuard)
-  @Get()
-  async getProgress(@Req() req) {
-    return this.registrationsService.findByUserId(req.user.id);
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Get()
+  // async getProgress(@Req() req) {
+  //   return this.registrationsService.findByUserId(req.user.id);
+  // }
 }

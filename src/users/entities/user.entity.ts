@@ -18,5 +18,7 @@ export class User {
   @Column({ default: 'student' }) // 'admin' or 'student'
   role: string;
 
+  @Column({ default: 'pending' })  // Set a default status
+  status: string;  // Add the status property
   // Add other fields as necessary
 }

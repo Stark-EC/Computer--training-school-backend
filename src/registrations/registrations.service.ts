@@ -14,12 +14,22 @@ export class RegistrationsService {
   ) {}
 
   async register(userId: number, courseId: number): Promise<Registration> {
-    const payment = await this.paymentsService.findPendingPayment(userId);
-    if (!payment || payment.status !== 'completed') {
-      throw new ForbiddenException('You must complete payment before registering for courses.');
+    const payment = await this.paymentsService.findPendingPayments(userId);
+    if (payment.length === 0 || payment[0].status !== 'completed') {
+     throw new ForbiddenException('You must complete payment before registering for courses.');
     }
 
     const registration = this.registrationsRepository.create({ user: { id: userId }, course: { id: courseId } });
     return this.registrationsRepository.save(registration);
   }
+
+ // registrations.service.ts
+async findByUserId(userId: number): Promise<Registration[]> {
+  return this.registrationsRepository.find({
+    where: {
+      userId,
+    },
+  });
+}
+
 }
