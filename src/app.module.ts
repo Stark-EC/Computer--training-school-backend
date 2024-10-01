@@ -14,12 +14,12 @@ import { Payment } from './payments/entities/payment.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'STARKEC',
-      database: 'training_school',
+      type: 'postgres',
+      host: 'dpg-crtn95hu0jms73boao0g-a',
+      port: 5432,
+      username: 'starkec_db_user',
+      password: 'JfaRFEF1mdhGF2BrPv4hZsRO3ePPAvxJ',
+      database: 'starkec_db',
       autoLoadEntities: true,
       synchronize: true,
     }),

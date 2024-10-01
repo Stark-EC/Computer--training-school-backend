@@ -109,9 +109,7 @@ export class UsersController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('admin')
   @Put(':id/approve')
-  @ApiBearerAuth() // Indicates that the endpoint requires authentication
-  @ApiResponse({ status: 200, description: 'User approved successfully.' })
-  @ApiResponse({ status: 404, description: 'User not found.' })
+  @ApiBearerAuth() // Indicates that the endpoint requires authenticatio
   async approveUser(@Param('id') id: number) {
     return this.usersService.approveUser(id);
   }

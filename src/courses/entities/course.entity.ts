@@ -1,7 +1,7 @@
-// src/courses/entities/course.entity.ts
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { User } from 'src/users/entities/user.entity';
 
-@Entity('courses')
+@Entity()
 export class Course {
   @PrimaryGeneratedColumn()
   id: number;
@@ -13,8 +13,8 @@ export class Course {
   description: string;
 
   @Column()
-  duration: number; // Course duration in weeks or days
+  duration: string;
 
-  @Column({ default: true })
-  isActive: boolean; // To allow courses to be marked active/inactive
+  @ManyToMany(() => User, (user) => user.courses)
+  students: User[];
 }

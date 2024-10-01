@@ -1,7 +1,7 @@
-// src/users/entities/user.entity.ts
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
+import { Course } from 'src/courses/entities/course.entity';
 
-@Entity('users')
+@Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -15,10 +15,13 @@ export class User {
   @Column()
   email: string;
 
-  @Column({ default: 'student' }) // 'admin' or 'student'
+  @Column()
   role: string;
 
-  @Column({ default: 'pending' })  // Set a default status
-  status: string;  // Add the status property
-  // Add other fields as necessary
+  @Column({ default: 'pending' })
+  status: string;
+
+  @ManyToMany(() => Course, (course) => course.students)
+  @JoinTable() // This is important to establish a linking table for many-to-many
+  courses: Course[];
 }
